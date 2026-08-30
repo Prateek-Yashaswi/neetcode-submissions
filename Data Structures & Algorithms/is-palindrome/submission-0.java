@@ -1,0 +1,28 @@
+class Solution {
+    public boolean isPalindrome(String s) {
+        return solve(s);
+    }
+
+    private static boolean solve(String str) {
+        var start = 0;
+        var end = str.length() - 1;
+        str = str.toLowerCase();
+
+        while (start < end) {
+            if (!Character.isLetterOrDigit(str.charAt(start))) {
+                start++;
+                continue;
+            } else if (!Character.isLetterOrDigit(str.charAt(end))) {
+                end--;
+                continue;
+            } else if (!Objects.equals(str.charAt(start), str.charAt(end))) {
+                return false;
+            }
+
+            start++;
+            end--;
+        }
+
+        return true;
+    }
+}
